@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="eMe_m_XyQsEzXSWqFYz6Txrdn6Nfj7GGJDgKpirfZy8" />
-  <link rel="stylesheet" href="./static/css/main.css">
-  <link rel="alternate" type="application/rss+xml" title="apc.xyz" href="./feed.xml">
+  <link rel="stylesheet" href="../static/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="apc.xyz" href="../feed.xml">
   
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111525165-1"></script>
@@ -26,7 +26,7 @@
     <header class="site-header" role="banner">
 
   <div class="wrapper">
-    <a class="site-title" href="./">A.P.C.&#39;s Lil Page</a>
+    <a class="site-title" href="../">A.P.C.&#39;s Lil Page</a>
   
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -42,11 +42,11 @@
 
         <div class="trigger">
           
-            <a class="page-link" href="./blog/">Blog</a>
+            <a class="page-link" href="../blog/">Blog</a>
           
-            <a class="page-link" href="./cv/">CV</a>
+            <a class="page-link" href="../cv/">CV</a>
           
-            <a class="page-link" href="./kb/">Kb</a>
+            <a class="page-link" href="../kb/">Kb</a>
           
         </div>
       </nav>
@@ -59,17 +59,20 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Holas!</h1>
+    <h1 class="post-title">Knowledge Base</h1>
   </header>
 
   <div class="post-content">
-    <p>Así como lo dice el título, no hay muchas pretensiones acerca de esta página. Estoy actualmente trabajando con una empresa llamada <a href="https://emmegisoft.com">Emmegisoft S.r.l.</a> y me alegra decir que conozco personalmente a al menos 3 personas de los banners de la página. Aparte de mi trabajo con ellos, tengo una nube de cosas que quiero lograr, pero para ellos debo aprender y formarme en mi tiempo libre. Presento algunos de mi proyectos:</p>
-<ul>
-<li>Quise aprender algo de python, pero el libro que me gusta no está en versiones EPUB gratis, pero si su contenido, asi que estoy <a href="https://bitbucket.org/andresperezcera/diveintopython3book">convirtiendo todo usando el formato asciidoc</a>, sobre lo cual crearé un post mas adelante. Un aparente buen pretexto para aprender a usar el toolchain de asciidoc (asciidorctor, asciidoctor-pdf y asciidoctor-epub3).</li>
-<li>Tomé parte del programa <a href="https://pathway.lds.org">Pathway</a> de <a href="https://lds.org">La Iglesia de Jesucristo de los Santos de los Ultimos Dias</a>. Y planeo terminarlo para poder tomar clases a distancia en <a href="https://byui.edu">BYU Idaho</a> una vez terminado el proceso inicial.</li>
-<li>Soy instructor del <a href="https://es-la.facebook.com/Instituto.barranquilla/">Instituo de Religión de Barranquilla de la Iglesia de Jesucristo de los Santos de los Ultimos Dias</a>.</li>
-</ul>
-<p>Aparte de estas cosas en las que ya estoy comprometido, quiero establecer algunas metas puntuales para el 2018. ¿Alguien tiene una sugerencia?</p>
+    <p>This is a simple Knowledge Base I save in english in order to keep these things around and consult every time i need it.</p>
+<h3>Windows Drives out of folders</h3>
+<h4>Net Use</h4>
+<p><code>Net use</code> in the preferred command because it has a lazy behavior. If resour isn't available, it will wait for the next user request to check for availability.</p>
+<pre><code class="lang-cmd">net use x: \\localhost\c$\Folder\Example
+</code></pre>
+<h4>Subst</h4>
+<p><code>subst</code> is an active search and connect program, which will penalize your system if resource is not found, because it will keep trying to connect.</p>
+<pre><code class="lang-cmd">subst x: C:\Folder\Example
+</code></pre>
 
   </div>
 
