@@ -1,0 +1,7 @@
+/* Developers */
+	Author: Andres Perez
+
+
+/* Components */
+	Code Snipet background: https://www.toptal.com/designers/subtlepatterns/ep-natural-black/
+
