@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="eMe_m_XyQsEzXSWqFYz6Txrdn6Nfj7GGJDgKpirfZy8" />
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/css/highlight_styles/sparkled-monokai.css">
+    <link rel="alternate" type="application/rss+xml" title="FP Pro&#39;S CNV File" href="../../../feed.xml">
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    <a class="site-title" href="../../../">A.P.C.&#39;s Lil Page</a>
+  
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            <a class="page-link" href="../../../blog/">Blog</a>
+          
+            <a class="page-link" href="../../../cv/">CV</a>
+          
+            <a class="page-link" href="../../../kb/">Kb</a>
+          
+        </div>
+      </nav>
+  </div>
+</header>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">FP Pro&#39;S CNV File</h1>
+  </header>
+
+  <div class="post-content">
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>FP PRO lets the user insert fittings and kits into multijoints,
+structures and blocks when this happens, a reference to the inserted
+item (brand, series and code for fittings; group, kit name and
+description for kits) is introduced into the correspondig file (.BLK for
+blocks, .STR for structures and .NOD for multijoints). Once this
+reference is added, FP PRO "disconnects" it from the database, so that
+any modification made in FP PRO DATABASE to the data inserted in the
+file (e.g. renaming of the fitting) is not reflected on the multijoints,
+blocks and structures. To resolve this issue we have defined a way to
+update the information present in BLK, STR and NOD files.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_activation">Activation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This function can be activated in two ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Through a combination of keys to be entered while in FP PRO:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>CTRL+ALT+SHIFT+C</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>FP PRO asks for a file with a CNV extension.</p>
+</div>
+</li>
+<li>
+<p>From version 6.0/11, using the command line:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">fp_pro.exe --cnv path/to/cnvfile.cnv</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage">Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The CNV file has an INI structure, with sections defined by square brackets and keys in each section.
+The keys in a section can be single (e.g. COPYFROM) or multiple;
+in which case they must be named with a counter (e.g. FILE1, FILE2 &#8230;&#8203;).
+There can also be multiple sections of the same name,
+multijoints creation (NODEDEF1 &#8230;&#8203; NODEDEFn) is a sample thereof.
+The order in which sections are entered in the CNV file is not important, however,
+it&#8217;s recomended to start with [FILELIST].</p>
+</div>
+<div class="paragraph">
+<p>Creating a CNV file means defining the action (ACTION key) and which
+items must be modified: multijoints, structures, blocks, compound
+profiles (FILE1&#8230;&#8203;FILEn keys). What has been described up to now is
+contained in the section [FILELIST] that must be present in any CNV
+file.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Action</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Effect</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CONVERT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Item modification</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">REPORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Report generation (file)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SYNCHRONIZE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Synchronisation of a file with DB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">INSERT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multijoints addition</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Having done this, what to change inside the selected files has to be
+decided: you can act on single profiles, fittings, kits or brands,
+series and kit groups. The table below makes a summary of the available
+modifications.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reference">Reference</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_filelist_section">FILELIST Section</h3>
+<div class="paragraph">
+<p>This is the first section that FP PRO reads from the CNV file. It lists
+the action to be accomplished and the files that must be modified or
+read.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[FILELIST]
+ACTION=&lt;action&gt;
+FILE1=&lt;file name STR/BLK/NOD/ADD with complete path&gt;
+FILE2=&lt;file name STR/BLK/NOD/ADD with complete path&gt;
+...
+FILEn=&lt;file name STR/BLK/NOD/ADD with complete path&gt;</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_action_key">ACTION Key</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameters</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ACTION = CONVERT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Default) Changes names of fittings, kits, series (profile and fittings), brands, profile names and kit groups.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ACTION = REPORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generates report files that contain the list of
+fittings and kits present in the specified files (no conversion is
+executed). In particular three text files are created (see description
+in the reference section)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ACTION = SYNCHRONIZE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Synchronizes fittings and kits present in
+multijoints, blocks and structures with those present in the database.
+It erases those that are no more present and updates the description of
+those that are still present. Only FILE1&#8230;&#8203;FILEn must be specified and
+no other section</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ACTION = INSERT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">adds new multijoints</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_file_key">FILE Key</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">FILEn = &lt;complete path to file\\filename.ext&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>N is a counter tha starts from 1. Any number of <strong>FILEn</strong> specifiers can
+be used. The path must be complete (e.g. C:\FP_PRO\NOD\DEMO.NOD).
+Wildcards are also supported (e.g. C:\FP_PRO\NOD\*.NOD). Permitted
+extensions are STR, BLK, NOD and ADD.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_other_sections">Other Sections</h3>
+<div class="paragraph">
+<p>Other sections might be needed depending on the action to take place:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 66.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Item to change</th>
+<th class="tableblock halign-left valign-top">Section</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single fittings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FITTINGLIST</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fitting brand and/or series</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FITBRANDLIST</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single kit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">KITLIST</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kit group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">KITGROUPLIST</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single profiles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DXFLIST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Possible to modify ADD files</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Profile Series</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SERIELIST</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multijoint creation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NODEDEF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only angle or side-cut</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_serielist_section">SERIELIST Section</h4>
+<div class="paragraph">
+<p>Substitutes the name of the series in multi-joints, blocks, structures and <code>.add</code>  files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[SERIELIST]
+SERIE1 = &lt;old name&gt;,&lt;new name &gt;
+...
+SERIEn = &lt;old name&gt;,&lt;new name &gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dxflist_section">DXFLIST Section</h4>
+<div class="paragraph">
+<p>Substitutes profiles in multijoints, blocks, structures and add files.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[DXFLIST]
+DXF1=&lt;old series|old code&gt;, &lt;new series| new code&gt;
+...
+DXFn=&lt;old series|old code&gt;, &lt;new series| new code&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_kitlist_section">KITLIST Section</h4>
+<div class="paragraph">
+<p>Substitutes kits in blocks and structures.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[KITLIST]
+KIT1 = &lt;old group&gt;|&lt;old name&gt;,&lt;newgroup&gt;|&lt;new name&gt;|&lt;new quantity(optional)&gt;[,&lt;new group&gt;|&lt;nuovo nome&gt;|&lt;new quantity(optional)&gt; , ...]
+KIT2 = &lt;old group&gt;|&lt;old name&gt;,&lt;newgroup&gt;|&lt;new name&gt;|&lt;new quantity(optional)&gt;[,&lt;new group&gt;|&lt;nuovo nome&gt;|&lt;new quantity(optional)&gt; , ...]
+...
+KITn = &lt;old group&gt;|&lt;old name&gt;,&lt;newgroup&gt;|&lt;new name&gt;|&lt;new quantity(optional)&gt;[,&lt;new group&gt;|&lt;nuovo nome&gt;|&lt;new quantity(optional)&gt; , ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For each line the following information must be specified:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>original group name and kit name (if the group is "COMMON", leave the
+field empty)</p>
+</li>
+<li>
+<p>new group name and kit name (if the group is "COMMON", leave the field
+empty)</p>
+</li>
+<li>
+<p>(Optional) new kit quantity. Put 0 if the original kit must be removed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A kit can be substituted by more than one kit (insert the other kits in
+a comma-separated list)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fittinglist_section">FITTINGLIST Section</h4>
+<div class="paragraph">
+<p>Substitutes fittings in multijoints, blocks and structures.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[FITTINGLIST]
+FITTING1=&lt;old brand&gt;|&lt;old series&gt;|&lt;old code&gt;, &lt;new brand&gt;|&lt;new series&gt;|&lt;new code&gt;|&lt;new quantity (optional)&gt; [, &lt;new brand&gt;|&lt;new series&gt;|&lt;new code&gt;|&lt;new quantity (optional)&gt;, ...]
+FITTING2=&lt;old brand&gt;|&lt;old series&gt;|&lt;old code&gt;, &lt;new brand&gt;|&lt;new series&gt;|&lt;new code&gt;|&lt;new quantity (optional)&gt; [, &lt;new brand&gt;|&lt;new series&gt;|&lt;new code&gt;|&lt;new quantity (optional)&gt;, ...]
+...
+FITTINGn=&lt;old brand&gt;|&lt;old series&gt;|&lt;old code&gt;, &lt;new brand&gt;|&lt;new series&gt;|&lt;new code&gt;|&lt;new quantity (optional)&gt; [, &lt;new brand&gt;|&lt;new series&gt;|&lt;new code&gt;|&lt;new quantity (optional)&gt;, ... ]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For each line the following information must be specified:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>original fitting brand, series, code</p>
+</li>
+<li>
+<p>new fitting brand, series, code</p>
+</li>
+<li>
+<p>(Optional) new fitting quantity. Put 0 if the original kit must be removed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A fitting can be substituted by more than one fitting (insert the other
+fittings in a comma-separated list)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_fitbrandlist_section">FITBRANDLIST Section</h4>
+<div class="paragraph">
+<p>Substitutes brands or series from multijoints, structures and blocks.
+It&#8217;s useful if in FP PRO Database an entire brand or series has been
+renamed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[FITBRANDLIST]
+BRAND1=&lt;old brand|old series&gt;, &lt;new brand|new series&gt;
+...
+BRANDn=&lt;old brand|old series&gt;, &lt;new brand|new series&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_kitgrouplist_section">KITGROUPLIST Section</h4>
+<div class="paragraph">
+<p>Substitutes kit groups from structures and blocks. It&#8217;s useful if in FP
+PRO Database an entire kit group has been renamed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[KITGROUPLIST]
+GROUP1=&lt;old group&gt;, &lt;new group&gt;
+...
+GROUPn=&lt;old group&gt;, &lt;new group&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_nodedef_section">NODEDEF Section</h4>
+<div class="paragraph">
+<p>It&#8217;s possible to create multijoints: the creatable multijoints are of
+two kinds, angle or side-cut. Between the two there exists a fundamental
+difference: angle multijoints can be created only with fittings and
+without a "template" multijoints, while side-cut multijoints must be
+created basing on a "template" multijoint.</p>
+</div>
+<div class="paragraph">
+<p>For "template" multijoint we mean a multijoint of the same type of the
+one that must be created: the characteristics of the template will be
+reproduced in the new multijoints, to which the supplied fitting list is
+appended. If no fitting list is supplied, the one of the template wil
+lbe appended.</p>
+</div>
+<div class="paragraph">
+<p>The properties of the template will be "blindly" reproduced on the
+target multijoint, so extra care must be taken to be sure that the two
+multijoints are compatible.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[NODEDEF]
+COPYFROM=&lt;series1&gt;|&lt;code1&gt;|&lt;[HOT o COLD]&gt;,&lt;series2&gt;|&lt;code2&gt;|&lt;[HOT o COLD]&gt;,&lt;[ANGLE o SIDECUT]&gt;
+NODE1=&lt;series1&gt;|&lt;code1&gt;|&lt;[HOT o COLD]&gt;,&lt;series2&gt;|&lt;code2&gt;|&lt;[HOT o COLD]&gt;,&lt;[ANGLE o SIDECUT]&gt;
+...
+NODEn=&lt;series1&gt;|&lt;code1&gt;|&lt;[HOT o COLD]&gt;,&lt;series2&gt;|&lt;code2&gt;|&lt;[HOT o COLD]&gt;,&lt;[ANGLE o SIDECUT]&gt;
+FITTING1=&lt;brand&gt;|&lt;series&gt;|&lt;code&gt;|&lt;quantity&gt;|&lt;[90DEG o NOT90DEG]&gt;
+...
+FITTINGn=&lt;brand&gt;|&lt;series&gt;|&lt;code&gt;|&lt;quantity&gt;|&lt;[90DEG o NOT90DEG]&gt;</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_node_and_copyfrom_key">NODE and COPYFROM Key</h5>
+<div class="paragraph">
+<p>specifies the template multijoint to be used; only one <em>COPYFROM</em> is allowed in each <em>NODEDEF</em> section.
+It can be skipped if an angle multijoint has to be created.
+<em>COPYFROM</em> and <em>NODE</em> have the same format.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>series1|code1</em> and <em>series2|code2</em> are multijoint profiles (no 3-profile  multijoint is creatable)</p>
+</li>
+<li>
+<p><em>HOT or COLD</em> is profile view: it&#8217;s important to set it right for
+side-cut multijoints. Set only one of the two for each profile.</p>
+</li>
+<li>
+<p><em>ANGLE or SIDECUT</em> correspond to the multijoint type of the same name. Set one of the two for each multijoint.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_fitting_key">FITTING Key</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Brand, series, code</p>
+</li>
+<li>
+<p>Fitting brand, series and code</p>
+</li>
+<li>
+<p>Quantity* number of fittings to be inserted.</p>
+</li>
+<li>
+<p>90DEG or NOT90DEG</p>
+</li>
+<li>
+<p>The fitting must be used in multijoints with cuts equal to 90 degrees or not. Set only one of the two.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">Examples:</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_sample_cnv_file_with_descriptions">Sample CNV File with descriptions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">[FILELIST]
+ACTION=CONVERT                  <b class="conum">(1)</b>
+FILE1=C:\fp_pro\NOD\demo.nod
+FILE2=C:\fp_pro\NOD\glasses.nod
+FILE3=C:\fp_pro\blk\demo\*.blk
+FILE4=C:\fp_pro\str\demo\*.str
+
+[KITLIST]
+KIT1=G1|K1, G1|K1|2             <b class="conum">(2)</b>
+KIT2=G2|K2, G1|K3               <b class="conum">(3)</b>
+KIT3=G3|K3, G5|K4|2, G5|K5|5
+
+[FITTINGLIST]
+FITTING1=MM|SS|A1, MM|SS|A2|3   <b class="conum">(4)</b>
+FITTING2=MM|SS|A3, MMMM|SSSS|A4 <b class="conum">(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The modification are made on the files of DEMO and GLASSES series, and to all the blocks and structures of the DEMO series.</p>
+</li>
+<li>
+<p>kit K1 of G1 group gets a | | | quantity of 2; | |</p>
+</li>
+<li>
+<p>kit K2 of G2 group is substituted by kit K3 of G1| group; with a quantity | | equal to 3; | | | | |</p>
+</li>
+<li>
+<p>fitting A1 of series SS and | | | brand MM is substituted with | | fitting A2 of the same brand | | | and series</p>
+</li>
+<li>
+<p>Fitting A3 of series SS and brand MM is substituted with fitting A4 of series SSSS and brand MMMM.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_report_nod_csv_file">REPORT_NOD.CSV File</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Multijoints file name</p>
+</li>
+<li>
+<p>Multijoin type:</p>
+<div class="olist upperalpha">
+<ol class="upperalpha">
+<li>
+<p>|| side-side multijoin</p>
+</li>
+<li>
+<p>|- side-cut multijoin</p>
+</li>
+<li>
+<p>cut-cut multijoin</p>
+</li>
+<li>
+<p>|_ angle multijoin</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>First profile series</p>
+</li>
+<li>
+<p>First profile code</p>
+</li>
+<li>
+<p>First profile use</p>
+</li>
+<li>
+<p>Second profile series</p>
+</li>
+<li>
+<p>Second profile code</p>
+</li>
+<li>
+<p>Second profile use</p>
+</li>
+<li>
+<p>Central profile series (can be null)</p>
+</li>
+<li>
+<p>Central profile code (can be null)</p>
+</li>
+<li>
+<p>String ACCESSORIO (useless, but requested. It means fitting in Italian)</p>
+</li>
+<li>
+<p>Quantity (number of fittings)</p>
+</li>
+<li>
+<p>String OPZ if the fitting is optional (can be null)</p>
+</li>
+<li>
+<p>Reference dimension (as the fitting is inserted in Fp Pro&#8201;&#8212;&#8201;can be null)</p>
+</li>
+<li>
+<p>Calculation dimension (as the fitting is inserted in Fp Pro&#8201;&#8212;&#8201;can be null)</p>
+</li>
+<li>
+<p>Fitting brand</p>
+</li>
+<li>
+<p>Fitting code</p>
+</li>
+<li>
+<p>Fitting description</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_report_str_csv_file">REPORT_STR.CSV File</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>STR or BLK file name</p>
+</li>
+<li>
+<p>String KIT or ACCESSORIO (fitting in Italian)</p>
+</li>
+<li>
+<p>Quantity (kit or fitting number)</p>
+</li>
+<li>
+<p>String OPZ if the fitting or kit is optional (can be null)</p>
+</li>
+<li>
+<p>Reference dimension (as the fitting is inserted in Fp Pro&#8201;&#8212;&#8201;can be null)</p>
+</li>
+<li>
+<p>Calculation dimension (as the fitting is inserted in Fp Pro&#8201;&#8212;&#8201;can be null</p>
+</li>
+<li>
+<p>Fitting series or kit group</p>
+</li>
+<li>
+<p>Fitting or kit code</p>
+</li>
+<li>
+<p>Kit or fitting description</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading"></h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+            </li>
+            
+            <li><a href="mailto:andresperezcera@gmail.com">andresperezcera@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/andresperezcera"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg></span><span class="username">andresperezcera</span></a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/andresperezcera"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg></span><span class="username">andresperezcera</span></a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>A site built using lektor and hosted using github pages. Atomatically deployed using Travis CI.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+  </body>
+</html>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
