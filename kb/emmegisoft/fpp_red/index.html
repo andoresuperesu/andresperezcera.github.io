@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="eMe_m_XyQsEzXSWqFYz6Txrdn6Nfj7GGJDgKpirfZy8" />
-    <link rel="stylesheet" href="../../static/css/main.css">
-    <link rel="stylesheet" href="../../static/css/highlight_styles/sparkled-monokai.css">
-    <link rel="alternate" type="application/rss+xml" title="Emmegisoft" href="../../feed.xml">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/css/highlight_styles/sparkled-monokai.css">
+    <link rel="alternate" type="application/rss+xml" title="Instalación en red" href="../../../feed.xml">
   </head>
   <body>
     <header class="site-header" role="banner">
 
   <div class="wrapper">
-    <a class="site-title" href="../../">A.P.C.&#39;s Lil Page</a>
+    <a class="site-title" href="../../../">A.P.C.&#39;s Lil Page</a>
   
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -29,11 +29,11 @@
 
         <div class="trigger">
           
-            <a class="page-link" href="../../blog/">Blog</a>
+            <a class="page-link" href="../../../blog/">Blog</a>
           
-            <a class="page-link" href="../../cv/">CV</a>
+            <a class="page-link" href="../../../cv/">CV</a>
           
-            <a class="page-link" href="../../kb/">Kb</a>
+            <a class="page-link" href="../../../kb/">Kb</a>
           
         </div>
       </nav>
@@ -45,25 +45,37 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Emmegisoft</h1>
+    <h1 class="post-title">Instalación en red</h1>
   </header>
 
   <div class="post-content">
-    <p>Esta es la sección de Emmegisoft de mi "knowledge base" (base de conocimiento de mi página personal)</p>
-<h2>FP Pro</h2>
-<p>FP Pro es el programa de manejo de carpinterías en aluminio orientado específicamente a ventanas, puertas y fachadas sencillas.</p>
-<h3>Basicas</h3>
+    <p>Este artículo es informativo y/o para uso de administradores de datos del programa FP Pro o de la Suite FP. Si desea hacer cambios en el programa, contacte a un técnico de Emmegisoft. La instalación en Terminal Server siempre requiere que contacte a un téncico de Emmegisoft.</p>
+<p>FP Pro tiene varias maneras de ejecutarse en red. En todas las condicciones se necesita acceso compartido a los archivos base (bien sea en un servidor o una carpeta compartida en un computador).La base de datos puede ser basada en access (archivo) o en MySQL (ya sea en un servidor o en un equipo de usuario). Las transferencias en red de archivos tienden a ser lentas en comparación con la escritura en disco, por lo cual el desempeño tiende a ser mas lento cuando se comparten los archivos en red.</p>
+<h2>Carpetas de trabajo de FP Pro</h2>
+<p>Copie las siguientes carpetas de "C:\FP_PRO\" a la nueva obicación:</p>
 <ul>
-<li><a href="../../kb/emmegisoft/instalacion">Instalación del Programa</a></li>
-<li><a href="../../kb/emmegisoft/fpp_red">Instalación de Archivos de Trabajo en Red</a></li>
-<li><a href="../../kb/emmegisoft/fpp_db_imp_exp">Exportación e Importación desde FP Pro Database</a></li>
+<li>attachments</li>
+<li>attachmentsdel</li>
+<li>blk</li>
+<li>custompics</li>
+<li>dxf</li>
+<li>fitpics</li>
+<li>job</li>
+<li>job_archive</li>
+<li>kitpics</li>
+<li>mac</li>
+<li>mdb</li>
+<li>nod</li>
+<li>report</li>
+<li>str</li>
+<li>texture</li>
 </ul>
-<h3>Avanzadas</h3>
-<ul>
-<li><a href="../../kb/emmegisoft/permisos-usuarios">Habilitar/Deshabilitar Permisos de Usuario</a></li>
-<li><a href="../../kb/emmegisoft/cnv">Renombrar accesorios, kits, series, perfiles masivamente</a></li>
-</ul>
-<h3>FP Tools</h3>
+<h2>Observaciones importantes:</h2>
+<p>Algunas empresas deciden instalar el programa en modo Terminal Server a fín de evitar las demoras por transferencias de archivos, también se deciden por esta opción para mejorar el desempeño general de la aplicación a traves de las mejores opciones de procesadores disponibles para servidores. En esta configuración, los computadores acceden via escritorio remoto al programa FP Pro las transferencia de red se limitan al acceso a dicho escritorio. Es necesario tener en cuenta que esta oopción requiere licencias de acceso remoto cuando el numero de usuarios supera los usuarios disponibles por defecto en la licencia de Windows Server; estos costos no están incluidos en la licencia de FP Pro.</p>
+<h2>Importante considerar el numero de usuarios:</h2>
+<p>Cuando se tienen mas que 3 usuarios, es importante migrar la base de datos de access a MySQL. MySQL es una base de datos relacional de codigo abierto y gratis en su versión para la comunidad. Ofrece características robustas para el trabajo en red y desde el servidor ya que admite una concurrencia de usuarios mas alta. Es importante notar que para un desempeño optimo de la base de datos, es necesario proveer bien sea un disco duro en estado solido o altas cantidades de ram.</p>
+<h2>Nuevas tecnologías:</h2>
+<p>Tanto FP Pro como MySQL se beneficiarían enormemente del uso de discos duros en estado sólido (SSD) puesto que multiplica las velocidades de lectura y escritura. Por lo tanto son un muy buena inversión al momento de agilizar el cálculo y guardado de información en el programa.</p>
 
   </div>
 
