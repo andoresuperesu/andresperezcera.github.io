@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="eMe_m_XyQsEzXSWqFYz6Txrdn6Nfj7GGJDgKpirfZy8" />
-    <link rel="stylesheet" href="../../static/css/main.css">
-    <link rel="stylesheet" href="../../static/css/highlight_styles/sparkled-monokai.css">
-    <link rel="alternate" type="application/rss+xml" title="Emmegisoft" href="../../feed.xml">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/css/highlight_styles/sparkled-monokai.css">
+    <link rel="alternate" type="application/rss+xml" title="Configuración de Archivos INI" href="../../../feed.xml">
   </head>
   <body>
     <header class="site-header" role="banner">
 
   <div class="wrapper">
-    <a class="site-title" href="../../">A.P.C.&#39;s Lil Page</a>
+    <a class="site-title" href="../../../">A.P.C.&#39;s Lil Page</a>
   
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -29,11 +29,11 @@
 
         <div class="trigger">
           
-            <a class="page-link" href="../../blog/">Blog</a>
+            <a class="page-link" href="../../../blog/">Blog</a>
           
-            <a class="page-link" href="../../cv/">CV</a>
+            <a class="page-link" href="../../../cv/">CV</a>
           
-            <a class="page-link" href="../../kb/">Kb</a>
+            <a class="page-link" href="../../../kb/">Kb</a>
           
         </div>
       </nav>
@@ -45,26 +45,26 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Emmegisoft</h1>
+    <h1 class="post-title">Configuración de Archivos INI</h1>
   </header>
 
   <div class="post-content">
-    <p>Esta es la sección de Emmegisoft de mi "knowledge base" (base de conocimiento de mi página personal)</p>
-<h2>FP Pro</h2>
-<p>FP Pro es el programa de manejo de carpinterías en aluminio orientado específicamente a ventanas, puertas y fachadas sencillas.</p>
-<h3>Basicas</h3>
-<ul>
-<li><a href="../../kb/emmegisoft/instalacion">Instalación del Programa</a></li>
-<li><a href="../../kb/emmegisoft/fpp_red">Instalación de Archivos de Trabajo en Red</a></li>
-<li><a href="../../kb/emmegisoft/fpp_db_imp_exp">Exportación e Importación desde FP Pro Database</a></li>
-</ul>
-<h3>Avanzadas</h3>
-<ul>
-<li><a href="../../kb/emmegisoft/permisos-usuarios">Habilitar/Deshabilitar Permisos de Usuario</a></li>
-<li><a href="../../kb/emmegisoft/fpp_ini">Configuración archivo INI</a></li>
-<li><a href="../../kb/emmegisoft/cnv">Renombrar accesorios, kits, series, perfiles masivamente</a></li>
-</ul>
-<h3>FP Tools</h3>
+    <p>El archivo de configuración FP Pro.ini puede estar ubicado en cualquier carpeta a la que el usuario tenga acceso, pero por seguridad debería estar ubicado en la carpeta del usuario. Cuando el archivo se encuentra en la carpeta del usuarios Windows se encarga de la seguridad del mismo, lo cual es de importancia cuando se instala en Terminal Server.</p>
+<h2>Multi-Usuario (Terminal Server)</h2>
+<p>Esta es una configuración típica para terminal server, pero tambien es necesario cuando el mismo computador es usado por varios usuarios que requieren acceso a FP Pro.</p>
+<pre><code class="lang-INI">[GENERAL]
+LastUserFilter=xuserx
+TMP_PATH=C:\USERS\xuserx\APPDATA\LOCAL\EMMEGISOFT\FP_PRO\TEMP\
+LOG_PATH=C:\USERS\xuserx\APPDATA\LOCAL\EMMEGISOFT\FP_PRO\LOGS\
+</code></pre>
+<h2>Exportación de maquinado y corte</h2>
+<p>Estas opciones pueden configurarse tambien desde la interfaz de usuario de FP Pro, pero es conveniente saber donde se encuentran para der modificadas manualmente.</p>
+<pre><code class="lang-INI">[General]
+CUTTING_LIST_MODE=3
+CUTTING_LIST_ORDER=1
+CUTTING_LIST_PIECES_SORTING=1
+CUTTING_LIST_REFERENCE=5
+</code></pre>
 
   </div>
 
