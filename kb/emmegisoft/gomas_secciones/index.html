@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="eMe_m_XyQsEzXSWqFYz6Txrdn6Nfj7GGJDgKpirfZy8" />
-    <link rel="stylesheet" href="../static/css/main.css">
-    <link rel="stylesheet" href="../static/css/highlight_styles/sparkled-monokai.css">
-    <link rel="alternate" type="application/rss+xml" title="Something" href="../feed.xml">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/css/highlight_styles/sparkled-monokai.css">
+    <link rel="alternate" type="application/rss+xml" title="Gomas en las Secciones" href="../../../feed.xml">
   </head>
   <body>
     <header class="site-header" role="banner">
 
   <div class="wrapper">
-    <a class="site-title" href="../">A.P.C.&#39;s Lil Page</a>
+    <a class="site-title" href="../../../">A.P.C.&#39;s Lil Page</a>
   
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -29,11 +29,11 @@
 
         <div class="trigger">
           
-            <a class="page-link" href="../blog/">Blog</a>
+            <a class="page-link" href="../../../blog/">Blog</a>
           
-            <a class="page-link" href="../cv/">CV</a>
+            <a class="page-link" href="../../../cv/">CV</a>
           
-            <a class="page-link" href="../kb/">Kb</a>
+            <a class="page-link" href="../../../kb/">Kb</a>
           
         </div>
       </nav>
@@ -45,44 +45,31 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Something</h1>
+    <h1 class="post-title">Gomas en las Secciones</h1>
   </header>
 
   <div class="post-content">
     <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>A simple <a href="http://asciidoc.org">AsciiDoc</a> document.</p>
+<p>FP Pro permite agregar empaques a las secciones. Esto requiere que varias condiciones se cumplan, pero antes de entrar en detalles, por favor vea el video abajo.</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/j6p7UyJ102c?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_introduction">Introduction</h2>
+<h2 id="_configuraciones_necesarias">Configuraciones necesarias</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A paragraph followed by a simple list with square bullets.</p>
-</div>
-<div class="ulist square">
-<ul class="square">
-<li>
-<p>item 1</p>
-</li>
-<li>
-<p>item 2</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s how you say &#8220;Hello, World!&#8221; in Prawn:</p>
+<p>La primera configuración necesaria es en el INI de FP Pro. Debemos activar la clave <code>FITINSECTIONMANAG_ENABLED</code> en el archivo FP_PRO.ini:</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 1. Create a basic PDF document using Prawn</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby">require 'prawn'
-
-Prawn::Document.generate 'example.pdf' do
-  text 'Hello, World!'
-end</code></pre>
+<pre class="highlightjs highlight"><code data-lang="ini" class="language-ini hljs">FITINSECTIONMANAG_ENABLED=YES</code></pre>
 </div>
 </div>
 </div>

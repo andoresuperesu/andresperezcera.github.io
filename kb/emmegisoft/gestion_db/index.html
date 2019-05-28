@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="eMe_m_XyQsEzXSWqFYz6Txrdn6Nfj7GGJDgKpirfZy8" />
-    <link rel="stylesheet" href="../static/css/main.css">
-    <link rel="stylesheet" href="../static/css/highlight_styles/sparkled-monokai.css">
-    <link rel="alternate" type="application/rss+xml" title="Something" href="../feed.xml">
+    <link rel="stylesheet" href="../../../static/css/main.css">
+    <link rel="stylesheet" href="../../../static/css/highlight_styles/sparkled-monokai.css">
+    <link rel="alternate" type="application/rss+xml" title="Gestión de Database" href="../../../feed.xml">
   </head>
   <body>
     <header class="site-header" role="banner">
 
   <div class="wrapper">
-    <a class="site-title" href="../">A.P.C.&#39;s Lil Page</a>
+    <a class="site-title" href="../../../">A.P.C.&#39;s Lil Page</a>
   
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -29,11 +29,11 @@
 
         <div class="trigger">
           
-            <a class="page-link" href="../blog/">Blog</a>
+            <a class="page-link" href="../../../blog/">Blog</a>
           
-            <a class="page-link" href="../cv/">CV</a>
+            <a class="page-link" href="../../../cv/">CV</a>
           
-            <a class="page-link" href="../kb/">Kb</a>
+            <a class="page-link" href="../../../kb/">Kb</a>
           
         </div>
       </nav>
@@ -45,48 +45,29 @@
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Something</h1>
+    <h1 class="post-title">Gestión de Database</h1>
   </header>
 
   <div class="post-content">
-    <div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>A simple <a href="http://asciidoc.org">AsciiDoc</a> document.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_introduction">Introduction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A paragraph followed by a simple list with square bullets.</p>
-</div>
-<div class="ulist square">
-<ul class="square">
-<li>
-<p>item 1</p>
-</li>
-<li>
-<p>item 2</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s how you say &#8220;Hello, World!&#8221; in Prawn:</p>
-</div>
-<div class="listingblock">
-<div class="title">Listing 1. Create a basic PDF document using Prawn</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="ruby">require 'prawn'
-
-Prawn::Document.generate 'example.pdf' do
-  text 'Hello, World!'
-end</code></pre>
-</div>
-</div>
-</div>
-</div>
+    <p>La base de datos en FP Pro puede instalarse en 2 versiones y gestionarse en varias maneras. Lo importante a saber es lo siguiente:</p>
+<p>El programa instala inicialmente todos sus datos base en una base de datos de Access; este es un archivo con extensión ".mdb" y no necesita tener Access instalado en su ordenador. Este tipo de base de datos es bueno si y solo si lo usarán un maximo de 3 usuarios. Por estar basado en un archivo tiene un numero de concurrencia muy bajo.</p>
+<p>En los clientes que desean mejorar velocidad o que el numero de usuarios del programa FP Pro supera los 3 anteriormente mencionados, deben usar el motor de base de datos MySQL. Por asuntos de licencia recomendamos usar la versión de comunidad que no tiene restricciones en el uso comercial y no requiere licencias adicionales. La versión actualmente recomendada es la 5.5.8. También necesitara instalar los conectores de .net (versión 6.8.3) y odbc (versines 3.51.19 o 3.51.22).</p>
+<p>También es posible utilizar la versión 8 de MariaDB, que es una base de datos creada por el desarrollador original de MySQL cuando esta fué adquirida por Oracle.</p>
+<h2>Actualización de la base de datos</h2>
+<p>Existen 2 tipos de actualización de base de datos: Las actualizaciones parciales que se hacen durante los service packs y la actualización completa (creación de DB). La diferencia consiste en que la primera asume que el resto de la estructura de la base de datos se encuentra en correctas condiciones, mientras que la segunda revisa la estructura de cada tabla y la integridad de los datos. Si bien una actualización completa ayuda a solucionar algunos problemas, algunos inconvenientes en generación de metadatos relevantes para el programa requiere la intervención directa de soporte. No ejecute la una ni la otra si no entiende lo que hace. Siempre realice un respaldo de los datos de la base de datos y archivos de trabajo antes de proceder.</p>
+<h3>Actualización de service pack</h3>
+<p>Este tipo de actualización se realiza cada vez que se instala un service pack. Sin embargo, cuando las bases de datos son compartidas en red en modo cliente servidor, es preferible instalar el service pack con la ruta base por default del programa y luego actualizar la base de datos. Esto se realiza en la consola de servicio (service console). Los pasos son los siguientes:</p>
+<ol>
+<li>Abra la consola de servicio (Service Console).</li>
+<li>EN la parte superior izquierda está el botón Gestionar Base de datos. Arriba de este botón hay 2 Access y MySQL; bien sea el uno o el otro debe estar en verde su indicador.</li>
+<li>Haga click en gestionar base de datos.</li>
+<li>En la nueva ventana haga click en probar conexión.</li>
+<li>Si la conectó exitosamente a la base de datos, presione el botón actualizar db. Es posible que esté en italiano "Aggiorna versione DB".</li>
+</ol>
+<h3>Actualización completa</h3>
+<p>La única manera de obtener una actualización completa de la base de datos (especialmente necesarios al saltar varios service packs), es por medio de la ejecución del siguiente comando. Tenga en cuenta que solo debe ejecutarse una vez cuando los archivos son compartidos en RED.</p>
+<pre><code>    C:\FP_PRO\upgradedb.exe 100 /d
+</code></pre>
 
   </div>
 
