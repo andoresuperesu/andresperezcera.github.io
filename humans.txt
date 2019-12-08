@@ -1,7 +1,16 @@
-/* Developers */
-	Author: Andres Perez
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    <name> -- <role> -- <twitter>
+
+# THANKS
+
+    Armin Ronacher
 
 
-/* Components */
-	Code Snipet background: https://www.toptal.com/designers/subtlepatterns/ep-natural-black/
+# TECHNOLOGY COLOPHON
 
+    CSS3, HTML5, Ruby, Python, Asciidoc, Markdown
+    Git, Github, jQuery, Modernizr, Normalize.css, tufte-css, Lektor, Asciidoctor, Highlight.js, Font-Awesome
