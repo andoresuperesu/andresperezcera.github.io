@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&display=swap');
+
 @font-face {
     font-family: et-book;
     src: url(et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot);
@@ -45,7 +47,7 @@ body {
     margin-right: auto;
     padding-left: 12.5%;
     font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    background-color: #fffff8;
+    background-image : url(http://api.thumbr.it/whitenoise-361x370.png?background=#fffff8ff&noise=626262&density=15&opacity=152);
     color: #111;
     max-width: 1400px;
     counter-reset: sidenote-counter
@@ -98,6 +100,15 @@ p.subtitle {
 
 .numeral {
     font-family: et-book-roman-old-style
+}
+
+.blog-link {
+    font-family: 'EB Garamond', serif;
+}
+
+.blog-link + sub{
+    font-size: 1rem;
+    line-height: 1.5rem
 }
 
 .danger {
